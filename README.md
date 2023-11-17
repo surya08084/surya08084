@@ -1,4 +1,9 @@
 ### Hi there 👋
+- 🔭 I’m currently working on Demand Forecasting and Generative AI.
+- 🌱 I’m currently learning Gen AI and Quantum machine Learning
+- 👯 I’m looking to collaborate on Data Science industrial projects for university students.
+- 💬 Ask me about Data Science/ML/GenAI/NLP/Forecasting/CPG
+- 📫 How to reach me: [LinkedIn - Surya Tripathi](https://www.linkedin.com/in/08surya/)
 
 <!--
 **surya08084/surya08084** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
