@@ -1,8 +1,8 @@
-# Hi there, I'm Surya 👋
+# Hi there, I'm Surya Tripathi 👋
 
-### Senior Data Scientist & AI Specialist | Driving Business Growth with Data
+### Sr. Data Scientist & Analytics Leader | Driving Business Growth with Data
 
-<a href="https://www.linkedin.com/in/08surya" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=social&logo=linkedin" alt="LinkedIn"/></a>
+<a href="https://www.linkedin.com/in/08surya" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
 <a href="mailto:suryaec1099@gmail.com" target="_blank"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail"/></a>
 
 ---
@@ -54,9 +54,9 @@ My expertise spans diverse domains including **CPG, Retail, Healthcare, and Bank
 
 I am the creator and maintainer of **`autoaiclustering`**, an intuitive, low-code PyPI library for automated, AI-driven customer segmentation and clustering analysis. The goal is to democratize advanced clustering techniques for analysts and data scientists.
 
-* **Explore the project:** [GitHub Repository Link](https://github.com/surya08084/autoaiclustering)
+* **Explore the project:** [GitHub Repository Link](https://github.com/surya08084/Cluster_solution)
 * **Install the library:** `pip install autoaiclustering`
-* **Check it out on PyPI:** [PyPI Package Link](https://pypi.org/project/autoaiclustering/)
+* **Check it out on PyPI:** [PyPI Package Link](https://pypi.org/project/autoaicluster/)
 
 ---
 
@@ -75,3 +75,4 @@ Feel free to reach out to discuss your next data-driven initiative!
   <img src="https://github-readme-stats.vercel.app/api?username=surya08084&show_icons=true&theme=dracula&count_private=true" alt="Surya's GitHub Stats" />
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=surya08084&layout=compact&theme=dracula" alt="Surya's Top Languages" />
 </p>
+```
