@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surya | Sr. Data Scientist & Analytics Leader</title>
+    <meta name="description" content="Portfolio of Surya, a Sr. Data Scientist & Analytics Leader with 11+ years of experience in AI, ML, MLOps, and data-driven strategy.">
+    <meta name="author" content="Surya">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a192f; /* Navy background */
+            color: #ccd6f6; /* Light slate text */
+        }
+        .section-title {
+            color: #64ffda; /* Mint green accent */
+        }
+        .highlight {
+            color: #64ffda;
+        }
+        .card {
+            background-color: #112240; /* Lighter navy */
+            border: 1px solid #233554;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7);
+        }
+        .btn {
+            background-color: transparent;
+            border: 1px solid #64ffda;
+            color: #64ffda;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+        }
+        .nav-link {
+            color: #ccd6f6;
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: #64ffda;
+        }
+    </style>
+</head>
+<body class="antialiased leading-relaxed">
+
+    <!-- Header & Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-opacity-90 backdrop-blur-sm bg-[#0a192f]/80 shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold highlight">S.</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#expertise" class="nav-link">Expertise</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="btn px-4 py-2 rounded-md">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <i data-feather="menu"></i>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#112240]">
+            <a href="#about" class="block py-2 px-4 text-sm nav-link">About</a>
+            <a href="#expertise" class="block py-2 px-4 text-sm nav-link">Expertise</a>
+            <a href="#projects" class="block py-2 px-4 text-sm nav-link">Projects</a>
+            <a href="#contact" class="block py-2 px-4 text-sm nav-link">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6">
+
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen flex flex-col justify-center items-start pt-24">
+            <p class="text-lg highlight mb-4">Hi, my name is</p>
+            <h1 class="text-4xl md:text-7xl font-extrabold text-slate-100">Surya.</h1>
+            <h2 class="text-3xl md:text-6xl font-extrabold text-slate-400 mt-2">I build intelligent data solutions.</h2>
+            <p class="mt-6 max-w-xl text-lg text-slate-400">
+                I'm a <span class="highlight">Sr. Data Scientist and Analytics Leader</span> with over 11 years of experience specializing in AI, MLOps, and data-driven strategy. I transform complex business challenges into scalable, high-impact solutions.
+            </p>
+            <div class="mt-8">
+                <a href="#projects" class="btn text-lg px-8 py-4 rounded-md">View My Work</a>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-20 md:py-32">
+            <h2 class="text-3xl font-bold flex items-center mb-12">
+                <span class="section-title mr-4">01.</span>
+                <span class="text-slate-100">About Me</span>
+                <span class="ml-6 h-px w-full bg-slate-700"></span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-10 items-center">
+                <div class="md:col-span-3 text-slate-400 text-lg space-y-4">
+                    <p>
+                        With over a decade in the field, I've had the privilege of working across diverse industries including <b class="highlight">CPG, Retail, Healthcare, and Banking</b>. My journey has been driven by a core passion: leveraging data to solve real-world problems and create measurable business value.
+                    </p>
+                    <p>
+                        My expertise lies in the full project lifecycle, from architecting <b class="highlight">end-to-end MLOps pipelines</b> to developing sophisticated <b class="highlight">Generative AI models</b> and pricing strategies. I thrive on building not just models, but robust, production-ready systems that drive growth and efficiency.
+                    </p>
+                    <p>
+                        Whether it's deploying propensity models on <b class="highlight">GCP</b>, building econometric forecasts in <b class="highlight">Databricks</b>, or fine-tuning LLMs with <b class="highlight">Hugging Face</b>, I bring a pragmatic and results-oriented approach to every challenge.
+                    </p>
+                </div>
+                <div class="md:col-span-2 flex justify-center">
+                    <div class="w-64 h-64 rounded-md relative group">
+                        <div class="absolute inset-0 bg-slate-800 rounded-md z-0 transform transition-transform duration-300 group-hover:translate-x-2 group-hover:translate-y-2"></div>
+                        <div class="absolute inset-0 border-2 border-teal-300 rounded-md z-10 transition-transform duration-300 group-hover:-translate-x-2 group-hover:-translate-y-2"></div>
+                        <img src="https://placehold.co/400x400/112240/64ffda?text=Surya" 
+                             alt="Surya, Sr. Data Scientist" 
+                             class="w-full h-full object-cover rounded-md relative z-20"
+                             onerror="this.onerror=null;this.src='https://placehold.co/400x400/112240/64ffda?text=Surya';">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expertise Section -->
+        <section id="expertise" class="py-20 md:py-32">
+            <h2 class="text-3xl font-bold flex items-center mb-12">
+                <span class="section-title mr-4">02.</span>
+                <span class="text-slate-100">Core Expertise</span>
+                <span class="ml-6 h-px w-full bg-slate-700"></span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1: AI & ML -->
+                <div class="card p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <i data-feather="cpu" class="w-8 h-8 highlight"></i>
+                        <h3 class="text-xl font-bold text-slate-100 ml-4">AI & Machine Learning</h3>
+                    </div>
+                    <p class="text-slate-400">Deep Learning, Propensity Models, Segmentation, NLP, Computer Vision, and Forecasting.</p>
+                </div>
+                <!-- Card 2: MLOps & Cloud -->
+                <div class="card p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <i data-feather="cloud-drizzle" class="w-8 h-8 highlight"></i>
+                        <h3 class="text-xl font-bold text-slate-100 ml-4">MLOps & Cloud</h3>
+                    </div>
+                    <p class="text-slate-400">CI/CD pipelines, production model deployment, and infrastructure on GCP, Azure, and Databricks.</p>
+                </div>
+                <!-- Card 3: Business Strategy -->
+                <div class="card p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <i data-feather="bar-chart-2" class="w-8 h-8 highlight"></i>
+                        <h3 class="text-xl font-bold text-slate-100 ml-4">Data-Driven Strategy</h3>
+                    </div>
+                    <p class="text-slate-400">Price Analytics, Revenue Growth Management, Econometric Models, and Price Elasticity.</p>
+                </div>
+            </div>
+            <div class="mt-10 text-center">
+                <h4 class="text-lg font-semibold text-slate-300 mb-4">Technologies I Use</h4>
+                <div class="flex flex-wrap justify-center items-center gap-4">
+                    <span class="bg-slate-700 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">Python</span>
+                    <span class="bg-slate-700 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">GCP</span>
+                    <span class="bg-slate-700 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">Azure</span>
+                    <span class="bg-slate-700 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">Databricks</span>
+                    <span class="bg-slate-700 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">MLflow</span>
+                    <span class="bg-slate-700 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">Docker</span>
+                    <span class="bg-slate-700 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">PyTorch</span>
+                    <span class="bg-slate-700 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">Hugging Face</span>
+                    <span class="bg-slate-700 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">SQL</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 md:py-32">
+            <h2 class="text-3xl font-bold flex items-center mb-12">
+                <span class="section-title mr-4">03.</span>
+                <span class="text-slate-100">Featured Project</span>
+                <span class="ml-6 h-px w-full bg-slate-700"></span>
+            </h2>
+            <div class="card rounded-lg overflow-hidden grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                <div class="p-8">
+                    <p class="section-title text-sm font-semibold">PyPI Library</p>
+                    <h3 class="text-2xl font-bold text-slate-100 mt-2 mb-4">autoaiclustering</h3>
+                    <div class="text-slate-400 space-y-4">
+                        <p>An intuitive, low-code Python library designed to automate and democratize advanced customer segmentation. It empowers data scientists and analysts to perform robust clustering analysis with minimal boilerplate code.</p>
+                        <p>The library handles preprocessing, model selection, and visualization, providing actionable insights out-of-the-box.</p>
+                    </div>
+                    <div class="mt-6 flex items-center space-x-4">
+                        <a href="https://github.com/surya08084/autoaiclustering" target="_blank" class="nav-link hover:text-teal-300" aria-label="GitHub">
+                            <i data-feather="github"></i>
+                        </a>
+                        <a href="https://pypi.org/project/autoaiclustering/" target="_blank" class="nav-link hover:text-teal-300" aria-label="PyPI">
+                            <i data-feather="package"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                     <img src="https://placehold.co/600x400/0a192f/64ffda?text=autoaiclustering" 
+                          alt="autoaiclustering project" 
+                          class="object-cover w-full h-full"
+                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/0a192f/64ffda?text=autoaiclustering';">
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 md:py-32 text-center">
+             <h2 class="text-3xl font-bold flex items-center mb-4">
+                <span class="section-title mr-4">04.</span>
+                <span class="text-slate-100">What's Next?</span>
+            </h2>
+            <h3 class="text-4xl md:text-5xl font-bold text-slate-100 mt-4">Get In Touch</h3>
+            <p class="mt-6 max-w-xl mx-auto text-lg text-slate-400">
+                I am actively seeking opportunities for <b class="highlight">consulting engagements</b> and <b class="highlight">project sponsorships</b>. If you have a project in mind, a complex problem to solve, or simply want to connect, I'd love to hear from you.
+            </p>
+            <div class="mt-10">
+                <a href="mailto:suryaec1099@gmail.com" class="btn text-lg px-8 py-4 rounded-md">Say Hello</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex space-x-6 mb-4 md:mb-0">
+                <a href="https://github.com/surya08084" target="_blank" class="nav-link" aria-label="GitHub">
+                    <i data-feather="github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/08surya" target="_blank" class="nav-link" aria-label="LinkedIn">
+                    <i data-feather="linkedin"></i>
+                </a>
+                 <a href="mailto:suryaec1099@gmail.com" class="nav-link" aria-label="Email">
+                    <i data-feather="mail"></i>
+                </a>
+            </div>
+            <p class="text-slate-500 text-sm">
+                Designed & Built by Surya
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Feather Icons
+        feather.replace();
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
