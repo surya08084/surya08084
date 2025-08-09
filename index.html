@@ -18,247 +18,255 @@
     <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
 
+    <!-- Alpine.js for interactivity -->
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
     <style>
+        :root {
+            --bg-navy: #0a192f;
+            --light-navy: #112240;
+            --lightest-navy: #233554;
+            --slate: #8892b0;
+            --light-slate: #a8b2d1;
+            --lightest-slate: #ccd6f6;
+            --white: #e6f1ff;
+            --green: #64ffda;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0a192f; /* Navy background */
-            color: #ccd6f6; /* Light slate text */
-        }
-        .section-title {
-            color: #64ffda; /* Mint green accent */
+            background-color: var(--bg-navy);
+            color: var(--slate);
         }
         .highlight {
-            color: #64ffda;
+            color: var(--green);
         }
-        .card {
-            background-color: #112240; /* Lighter navy */
-            border: 1px solid #233554;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7);
+        .section-title {
+            color: var(--green);
         }
         .btn {
             background-color: transparent;
-            border: 1px solid #64ffda;
-            color: #64ffda;
+            border: 1px solid var(--green);
+            color: var(--green);
             transition: background-color 0.3s ease;
         }
         .btn:hover {
             background-color: rgba(100, 255, 218, 0.1);
         }
-        .nav-link {
-            color: #ccd6f6;
-            transition: color 0.3s;
+        .nav-link.active {
+            color: var(--green);
+            font-weight: 700;
         }
-        .nav-link:hover {
-            color: #64ffda;
+        .nav-link.active .nav-indicator {
+            width: 64px; /* 16 in tailwind units */
+            height: 2px;
+            background-color: var(--green);
+        }
+        .social-link:hover {
+            color: var(--green);
+            transform: translateY(-3px);
+        }
+        .tab-button.active {
+            color: var(--green);
+            border-left-color: var(--green);
+            background-color: var(--light-navy);
+        }
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
-<body class="antialiased leading-relaxed">
+<body class="antialiased leading-relaxed" x-data>
 
-    <!-- Header & Navigation -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-opacity-90 backdrop-blur-sm bg-[#0a192f]/80 shadow-md">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold highlight">S.</a>
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="#about" class="nav-link">About</a>
-                <a href="#expertise" class="nav-link">Expertise</a>
-                <a href="#projects" class="nav-link">Projects</a>
+    <div class="flex min-h-screen">
+        <!-- Left Sidebar (Fixed for Desktop) -->
+        <header class="hidden lg:flex lg:flex-col lg:w-1/2 lg:h-screen lg:justify-between lg:py-24 lg:sticky lg:top-0 px-12">
+            <div>
+                <h1 class="text-5xl font-extrabold text-slate-100">Surya</h1>
+                <h2 class="mt-3 text-xl font-bold text-slate-300">Sr. Data Scientist & Analytics Leader</h2>
+                <p class="mt-4 max-w-xs text-slate-400">I build intelligent, scalable data solutions that drive business growth.</p>
+                
+                <nav class="mt-16">
+                    <ul class="space-y-4" id="desktop-nav">
+                        <li><a href="#about" class="group nav-link flex items-center py-2 transition-all duration-300"><span class="nav-indicator mr-4 h-px w-8 bg-slate-500 transition-all duration-300 group-hover:w-16 group-hover:bg-slate-100"></span><span class="nav-text">About</span></a></li>
+                        <li><a href="#expertise" class="group nav-link flex items-center py-2 transition-all duration-300"><span class="nav-indicator mr-4 h-px w-8 bg-slate-500 transition-all duration-300 group-hover:w-16 group-hover:bg-slate-100"></span><span class="nav-text">Expertise</span></a></li>
+                        <li><a href="#projects" class="group nav-link flex items-center py-2 transition-all duration-300"><span class="nav-indicator mr-4 h-px w-8 bg-slate-500 transition-all duration-300 group-hover:w-16 group-hover:bg-slate-100"></span><span class="nav-text">Projects</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="https://github.com/surya08084" target="_blank" class="social-link text-slate-400 transition-all duration-300" aria-label="GitHub"><i data-feather="github" class="w-6 h-6"></i></a>
+                <a href="https://www.linkedin.com/in/08surya" target="_blank" class="social-link text-slate-400 transition-all duration-300" aria-label="LinkedIn"><i data-feather="linkedin" class="w-6 h-6"></i></a>
+                <a href="mailto:suryaec1099@gmail.com" class="social-link text-slate-400 transition-all duration-300" aria-label="Email"><i data-feather="mail" class="w-6 h-6"></i></a>
+            </div>
+        </header>
+
+        <!-- Mobile Header -->
+        <div class="lg:hidden fixed top-0 left-0 right-0 z-50 bg-opacity-90 backdrop-blur-sm bg-[#0a192f]/80 shadow-md">
+            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold highlight">S.</a>
                 <a href="#contact" class="btn px-4 py-2 rounded-md">Contact</a>
             </div>
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-white focus:outline-none">
-                    <i data-feather="menu"></i>
-                </button>
-            </div>
-        </nav>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-[#112240]">
-            <a href="#about" class="block py-2 px-4 text-sm nav-link">About</a>
-            <a href="#expertise" class="block py-2 px-4 text-sm nav-link">Expertise</a>
-            <a href="#projects" class="block py-2 px-4 text-sm nav-link">Projects</a>
-            <a href="#contact" class="block py-2 px-4 text-sm nav-link">Contact</a>
         </div>
-    </header>
 
-    <main class="container mx-auto px-6">
-
-        <!-- Hero Section -->
-        <section id="hero" class="min-h-screen flex flex-col justify-center items-start pt-24">
-            <p class="text-lg highlight mb-4">Hi, my name is</p>
-            <h1 class="text-4xl md:text-7xl font-extrabold text-slate-100">Surya.</h1>
-            <h2 class="text-3xl md:text-6xl font-extrabold text-slate-400 mt-2">I build intelligent data solutions.</h2>
-            <p class="mt-6 max-w-xl text-lg text-slate-400">
-                I'm a <span class="highlight">Sr. Data Scientist and Analytics Leader</span> with over 11 years of experience specializing in AI, MLOps, and data-driven strategy. I transform complex business challenges into scalable, high-impact solutions.
-            </p>
-            <div class="mt-8">
-                <a href="#projects" class="btn text-lg px-8 py-4 rounded-md">View My Work</a>
-            </div>
-        </section>
-
-        <!-- About Me Section -->
-        <section id="about" class="py-20 md:py-32">
-            <h2 class="text-3xl font-bold flex items-center mb-12">
-                <span class="section-title mr-4">01.</span>
-                <span class="text-slate-100">About Me</span>
-                <span class="ml-6 h-px w-full bg-slate-700"></span>
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-5 gap-10 items-center">
-                <div class="md:col-span-3 text-slate-400 text-lg space-y-4">
-                    <p>
-                        With over a decade in the field, I've had the privilege of working across diverse industries including <b class="highlight">CPG, Retail, Healthcare, and Banking</b>. My journey has been driven by a core passion: leveraging data to solve real-world problems and create measurable business value.
-                    </p>
-                    <p>
-                        My expertise lies in the full project lifecycle, from architecting <b class="highlight">end-to-end MLOps pipelines</b> to developing sophisticated <b class="highlight">Generative AI models</b> and pricing strategies. I thrive on building not just models, but robust, production-ready systems that drive growth and efficiency.
-                    </p>
-                    <p>
-                        Whether it's deploying propensity models on <b class="highlight">GCP</b>, building econometric forecasts in <b class="highlight">Databricks</b>, or fine-tuning LLMs with <b class="highlight">Hugging Face</b>, I bring a pragmatic and results-oriented approach to every challenge.
-                    </p>
+        <!-- Right Scrolling Content -->
+        <main class="w-full lg:w-1/2 py-24 px-6 lg:px-12">
+            
+            <!-- About Me Section -->
+            <section id="about" class="fade-in-section mb-32">
+                 <div class="flex items-center mb-12 lg:hidden">
+                    <h2 class="text-3xl font-bold text-slate-100">About</h2>
+                    <span class="ml-6 h-px w-full bg-slate-700"></span>
                 </div>
-                <div class="md:col-span-2 flex justify-center">
-                    <div class="w-64 h-64 rounded-md relative group">
-                        <div class="absolute inset-0 bg-slate-800 rounded-md z-0 transform transition-transform duration-300 group-hover:translate-x-2 group-hover:translate-y-2"></div>
-                        <div class="absolute inset-0 border-2 border-teal-300 rounded-md z-10 transition-transform duration-300 group-hover:-translate-x-2 group-hover:-translate-y-2"></div>
-                        <img src="https://placehold.co/400x400/112240/64ffda?text=Surya" 
+                <div class="flex flex-col-reverse md:flex-row md:items-start gap-10">
+                    <div class="md:w-3/4 text-slate-400 text-lg space-y-4">
+                        <p>With over a decade in the field, I've had the privilege of working across diverse industries including <b class="highlight">CPG, Retail, Healthcare, and Banking</b>. My journey has been driven by a core passion: leveraging data to solve real-world problems and create measurable business value.</p>
+                        <p>My expertise lies in the full project lifecycle, from architecting <b class="highlight">end-to-end MLOps pipelines</b> to developing sophisticated <b class="highlight">Generative AI models</b> and pricing strategies. I thrive on building not just models, but robust, production-ready systems that drive growth and efficiency.</p>
+                        <p>Whether it's deploying propensity models on <b class="highlight">GCP</b>, building econometric forecasts in <b class="highlight">Databricks</b>, or fine-tuning LLMs with <b class="highlight">Hugging Face</b>, I bring a pragmatic and results-oriented approach to every challenge.</p>
+                    </div>
+                     <div class="md:w-1/4 flex justify-center md:justify-end">
+                        <img src="https://github.com/surya08084.png" 
                              alt="Surya, Sr. Data Scientist" 
-                             class="w-full h-full object-cover rounded-md relative z-20"
-                             onerror="this.onerror=null;this.src='https://placehold.co/400x400/112240/64ffda?text=Surya';">
+                             class="w-32 h-32 rounded-full object-cover border-2 border-green"
+                             onerror="this.onerror=null;this.src='https://placehold.co/200x200/112240/64ffda?text=S';">
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Expertise Section -->
-        <section id="expertise" class="py-20 md:py-32">
-            <h2 class="text-3xl font-bold flex items-center mb-12">
-                <span class="section-title mr-4">02.</span>
-                <span class="text-slate-100">Core Expertise</span>
-                <span class="ml-6 h-px w-full bg-slate-700"></span>
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Card 1: AI & ML -->
-                <div class="card p-6 rounded-lg">
-                    <div class="flex items-center mb-4">
-                        <i data-feather="cpu" class="w-8 h-8 highlight"></i>
-                        <h3 class="text-xl font-bold text-slate-100 ml-4">AI & Machine Learning</h3>
+            <!-- Expertise Section -->
+            <section id="expertise" class="fade-in-section mb-32" x-data="{ tab: 'ai' }">
+                <div class="flex items-center mb-12 lg:hidden">
+                    <h2 class="text-3xl font-bold text-slate-100">Expertise</h2>
+                    <span class="ml-6 h-px w-full bg-slate-700"></span>
+                </div>
+                <div class="flex flex-col md:flex-row gap-10">
+                    <div class="flex md:flex-col md:w-1/4">
+                        <button @click="tab = 'ai'" :class="{ 'active': tab === 'ai' }" class="tab-button text-left w-full p-3 text-slate-400 border-l-2 border-slate-700 hover:bg-light-navy hover:text-green transition-all duration-300">AI & Machine Learning</button>
+                        <button @click="tab = 'mlops'" :class="{ 'active': tab === 'mlops' }" class="tab-button text-left w-full p-3 text-slate-400 border-l-2 border-slate-700 hover:bg-light-navy hover:text-green transition-all duration-300">MLOps & Cloud</button>
+                        <button @click="tab = 'strategy'" :class="{ 'active': tab === 'strategy' }" class="tab-button text-left w-full p-3 text-slate-400 border-l-2 border-slate-700 hover:bg-light-navy hover:text-green transition-all duration-300">Data-Driven Strategy</button>
                     </div>
-                    <p class="text-slate-400">Deep Learning, Propensity Models, Segmentation, NLP, Computer Vision, and Forecasting.</p>
-                </div>
-                <!-- Card 2: MLOps & Cloud -->
-                <div class="card p-6 rounded-lg">
-                    <div class="flex items-center mb-4">
-                        <i data-feather="cloud-drizzle" class="w-8 h-8 highlight"></i>
-                        <h3 class="text-xl font-bold text-slate-100 ml-4">MLOps & Cloud</h3>
+                    <div class="md:w-3/4">
+                        <div x-show="tab === 'ai'" x-transition>
+                            <h3 class="text-xl font-bold text-slate-100 mb-2">Generative AI & Advanced Modeling</h3>
+                            <p class="text-slate-400 mb-4">Building and fine-tuning models that understand and generate human-like text and content.</p>
+                            <ul class="list-disc list-inside text-slate-400 space-y-2">
+                                <li><span class="highlight">Core Skills:</span> Deep Learning, LLMs, NLP, Computer Vision, Forecasting, Propensity Models.</li>
+                                <li><span class="highlight">Tools:</span> PyTorch, TensorFlow, Hugging Face, LangChain, Scikit-learn.</li>
+                            </ul>
+                        </div>
+                        <div x-show="tab === 'mlops'" x-transition>
+                            <h3 class="text-xl font-bold text-slate-100 mb-2">Production-Grade Infrastructure</h3>
+                            <p class="text-slate-400 mb-4">Designing and implementing robust, scalable, and automated MLOps pipelines from development to production.</p>
+                            <ul class="list-disc list-inside text-slate-400 space-y-2">
+                                <li><span class="highlight">Core Skills:</span> CI/CD, Model Deployment, Monitoring, Infrastructure as Code.</li>
+                                <li><span class="highlight">Tools:</span> GCP, Azure, Databricks, MLflow, Docker, Kubernetes.</li>
+                            </ul>
+                        </div>
+                        <div x-show="tab === 'strategy'" x-transition>
+                            <h3 class="text-xl font-bold text-slate-100 mb-2">Translating Data into Business Value</h3>
+                            <p class="text-slate-400 mb-4">Developing analytical frameworks that directly address key business challenges and drive revenue.</p>
+                            <ul class="list-disc list-inside text-slate-400 space-y-2">
+                                <li><span class="highlight">Core Skills:</span> Price Analytics, Revenue Growth Management, Econometric Models, Price Elasticity.</li>
+                                <li><span class="highlight">Tools:</span> Python (Pandas, Statsmodels), R, SQL, Apache Spark.</li>
+                            </ul>
+                        </div>
                     </div>
-                    <p class="text-slate-400">CI/CD pipelines, production model deployment, and infrastructure on GCP, Azure, and Databricks.</p>
                 </div>
-                <!-- Card 3: Business Strategy -->
-                <div class="card p-6 rounded-lg">
-                    <div class="flex items-center mb-4">
-                        <i data-feather="bar-chart-2" class="w-8 h-8 highlight"></i>
-                        <h3 class="text-xl font-bold text-slate-100 ml-4">Data-Driven Strategy</h3>
-                    </div>
-                    <p class="text-slate-400">Price Analytics, Revenue Growth Management, Econometric Models, and Price Elasticity.</p>
-                </div>
-            </div>
-            <div class="mt-10 text-center">
-                <h4 class="text-lg font-semibold text-slate-300 mb-4">Technologies I Use</h4>
-                <div class="flex flex-wrap justify-center items-center gap-4">
-                    <span class="bg-slate-700 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">Python</span>
-                    <span class="bg-slate-700 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">GCP</span>
-                    <span class="bg-slate-700 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">Azure</span>
-                    <span class="bg-slate-700 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">Databricks</span>
-                    <span class="bg-slate-700 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">MLflow</span>
-                    <span class="bg-slate-700 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">Docker</span>
-                    <span class="bg-slate-700 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">PyTorch</span>
-                    <span class="bg-slate-700 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">Hugging Face</span>
-                    <span class="bg-slate-700 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">SQL</span>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="py-20 md:py-32">
-            <h2 class="text-3xl font-bold flex items-center mb-12">
-                <span class="section-title mr-4">03.</span>
-                <span class="text-slate-100">Featured Project</span>
-                <span class="ml-6 h-px w-full bg-slate-700"></span>
-            </h2>
-            <div class="card rounded-lg overflow-hidden grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-                <div class="p-8">
-                    <p class="section-title text-sm font-semibold">PyPI Library</p>
-                    <h3 class="text-2xl font-bold text-slate-100 mt-2 mb-4">autoaiclustering</h3>
-                    <div class="text-slate-400 space-y-4">
-                        <p>An intuitive, low-code Python library designed to automate and democratize advanced customer segmentation. It empowers data scientists and analysts to perform robust clustering analysis with minimal boilerplate code.</p>
-                        <p>The library handles preprocessing, model selection, and visualization, providing actionable insights out-of-the-box.</p>
-                    </div>
-                    <div class="mt-6 flex items-center space-x-4">
-                        <a href="https://github.com/surya08084/autoaiclustering" target="_blank" class="nav-link hover:text-teal-300" aria-label="GitHub">
-                            <i data-feather="github"></i>
-                        </a>
-                        <a href="https://pypi.org/project/autoaiclustering/" target="_blank" class="nav-link hover:text-teal-300" aria-label="PyPI">
-                            <i data-feather="package"></i>
-                        </a>
-                    </div>
+            <!-- Projects Section -->
+            <section id="projects" class="fade-in-section mb-32">
+                <div class="flex items-center mb-12 lg:hidden">
+                    <h2 class="text-3xl font-bold text-slate-100">Projects</h2>
+                    <span class="ml-6 h-px w-full bg-slate-700"></span>
                 </div>
-                <div class="hidden md:block">
-                     <img src="https://placehold.co/600x400/0a192f/64ffda?text=autoaiclustering" 
-                          alt="autoaiclustering project" 
-                          class="object-cover w-full h-full"
-                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/0a192f/64ffda?text=autoaiclustering';">
+                <div class="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                    <div class="absolute -inset-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                    <div class="z-10 sm:col-span-6">
+                        <h3 class="font-medium leading-snug text-slate-200">
+                            <a href="https://github.com/surya08084/autoaiclustering" target="_blank" class="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-green focus-visible:text-green text-lg group/link">
+                                <span class="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
+                                autoaiclustering
+                                <i data-feather="arrow-up-right" class="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px"></i>
+                            </a>
+                        </h3>
+                        <p class="mt-2 text-sm leading-normal text-slate-400">
+                            An intuitive, low-code Python library to automate and democratize advanced customer segmentation. It empowers data scientists and analysts to perform robust clustering analysis with minimal boilerplate code, handling preprocessing, model selection, and visualization.
+                        </p>
+                        <div class="mt-2 flex flex-wrap">
+                            <span class="mr-1.5 mt-2 flex items-center rounded-full bg-green/10 px-3 py-1 text-xs font-medium leading-5 text-green">PyPI Library</span>
+                            <span class="mr-1.5 mt-2 flex items-center rounded-full bg-green/10 px-3 py-1 text-xs font-medium leading-5 text-green">Clustering</span>
+                            <span class="mr-1.5 mt-2 flex items-center rounded-full bg-green/10 px-3 py-1 text-xs font-medium leading-5 text-green">Automation</span>
+                        </div>
+                    </div>
+                    <img alt="autoaiclustering project" loading="lazy" width="200" height="48" class="rounded border-2 border-slate-200/10 transition group-hover:border-slate-200/30 sm:col-span-2 sm:translate-y-1" style="color:transparent" src="https://placehold.co/200x112/112240/64ffda?text=autoaiclustering">
                 </div>
-            </div>
-        </section>
+            </section>
+            
+            <!-- Contact Section -->
+            <section id="contact" class="fade-in-section mt-16 text-center">
+                <h3 class="text-3xl font-bold text-slate-100">Get In Touch</h3>
+                <p class="mt-4 max-w-xl mx-auto text-lg text-slate-400">
+                    I am actively seeking opportunities for <b class="highlight">consulting engagements</b> and <b class="highlight">project sponsorships</b>. If you have a project in mind, a complex problem to solve, or simply want to connect, I'd love to hear from you.
+                </p>
+                <div class="mt-8">
+                    <a href="mailto:suryaec1099@gmail.com" class="btn text-lg px-8 py-4 rounded-md">Say Hello</a>
+                </div>
+            </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="py-20 md:py-32 text-center">
-             <h2 class="text-3xl font-bold flex items-center mb-4">
-                <span class="section-title mr-4">04.</span>
-                <span class="text-slate-100">What's Next?</span>
-            </h2>
-            <h3 class="text-4xl md:text-5xl font-bold text-slate-100 mt-4">Get In Touch</h3>
-            <p class="mt-6 max-w-xl mx-auto text-lg text-slate-400">
-                I am actively seeking opportunities for <b class="highlight">consulting engagements</b> and <b class="highlight">project sponsorships</b>. If you have a project in mind, a complex problem to solve, or simply want to connect, I'd love to hear from you.
-            </p>
-            <div class="mt-10">
-                <a href="mailto:suryaec1099@gmail.com" class="btn text-lg px-8 py-4 rounded-md">Say Hello</a>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="py-8">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-            <div class="flex space-x-6 mb-4 md:mb-0">
-                <a href="https://github.com/surya08084" target="_blank" class="nav-link" aria-label="GitHub">
-                    <i data-feather="github"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/08surya" target="_blank" class="nav-link" aria-label="LinkedIn">
-                    <i data-feather="linkedin"></i>
-                </a>
-                 <a href="mailto:suryaec1099@gmail.com" class="nav-link" aria-label="Email">
-                    <i data-feather="mail"></i>
-                </a>
-            </div>
-            <p class="text-slate-500 text-sm">
-                Designed & Built by Surya
-            </p>
-        </div>
-    </footer>
+            <footer class="mt-24 text-center text-sm text-slate-500">
+                <p>Designed with inspiration from modern web trends. Built with Tailwind CSS and love for data.</p>
+            </footer>
+        </main>
+    </div>
 
     <script>
         // Feather Icons
         feather.replace();
 
-        // Mobile Menu Toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+        // --- Intersection Observer for Fade-in Sections ---
+        const sections = document.querySelectorAll('.fade-in-section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            rootMargin: '0px 0px -100px 0px'
         });
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // --- Active Nav Link Highlighting on Scroll ---
+        const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
+        const mainSections = document.querySelectorAll('main section');
+
+        const onScroll = () => {
+            let currentSection = '';
+            mainSections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 100) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', onScroll);
     </script>
 </body>
 </html>
